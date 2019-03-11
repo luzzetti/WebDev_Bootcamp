@@ -1,0 +1,58 @@
+h1
+{
+	color: cornflowerblue;
+}
+
+h2
+{
+	color: papayawhip
+}
+
+h3
+{
+	color: ##FFDEAD;
+}
+
+h4
+{
+	color: rgba(11, 99, 150, .6);
+}
+
+li
+{
+	color: tomato;
+}
+
+/*ID*/
+#name {
+	
+}
+
+/* Star Selector */
+
+* {
+	border: 1px solid lightgrey;
+}
+
+/*Descendent Selector*/
+
+li a {
+	color: red;
+}
+
+/*Adjacent Selector*/
+
+h4 + ul {
+	border: 2px solid red;
+}
+
+/*Attribute Selector*/
+
+a[href="www.google.it"] {
+	background: tomato;
+}
+
+/*nth of type*/
+li:nth-of-type(odd) {
+	background: purple;
+}
