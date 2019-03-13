@@ -1,0 +1,15 @@
+
+.girl {
+    color: pink;
+    border: 2px solid pink;
+}
+
+.boy {
+    color: cadetblue;
+    border: 2px solid cadetblue;
+}
+
+.obscure {
+    color: black;
+    background: black;
+}

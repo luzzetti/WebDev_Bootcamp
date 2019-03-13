@@ -1,0 +1,21 @@
+body { 
+    font-family: lato;
+    font-weight: 500;
+    
+    /* Fixed navbar Workaround */
+    padding-top: 4.5rem; 
+}
+
+h1 {
+    font-weight: 700;
+    text-align: center;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.selected {
+    background-color: #f8f9fa;
+}
