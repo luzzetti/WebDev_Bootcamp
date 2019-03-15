@@ -1,0 +1,23 @@
+body { 
+    font-family: lato;
+    
+    /* Fixed navbar Workaround */
+    padding-top: 4.5rem; 
+}
+
+h1 {
+    font-weight: 700;
+    text-align: center;
+}
+
+li.sing {
+    color: purple;
+}
+
+.plural {
+    color: tomato;
+}
+
+.done {
+    text-decoration: line-through;
+}
