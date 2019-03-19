@@ -1,0 +1,14 @@
+
+<% include partials/header %>
+
+<h1>Answer test</h1>
+<hr>
+<p>Thing you sent to the ejs file: <%= thingVar.toUpperCase() %> </p>
+
+<% if (thingVar.toLowerCase() === "nothing") { %>
+<p>Good. EisP</p>
+<% } else { %>
+<p> Meh...it sucks. </p>
+<% } %>
+
+<% include partials/footer %>
