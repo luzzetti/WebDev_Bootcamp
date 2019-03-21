@@ -46,7 +46,7 @@ app.get("/campgrounds/new", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    app.send("DO NOT 404 ON ME BRO!");
+    res.send("DO NOT 404 ON ME BRO!");
 });
 
 app.listen(3000, () => {

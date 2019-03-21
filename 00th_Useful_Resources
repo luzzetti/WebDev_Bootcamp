@@ -1,0 +1,71 @@
+
+
+Bacon Ipsum			https://baconipsum.com/
+Hipster Ipsum		https://hipsum.co/
+
+CSS Colour			http://colours.neilorangepeel.com/
+Grandienti			https://uigradients.com/#Bupe
+
+Fonts				https://fonts.google.com/
+Icons				https://fontawesome.com/?from=io
+Photos				https://unsplash.com/
+
+underscorejs		underscorejs.org						Libreria di funzioni utili
+patatap				www.patatap.com/						
+
+					https://stackshare.io/
+Postman									
+APIs				https://www.programmableweb.com/
+
+IMAGE Placeholder	https://placeholder.com/
+JSON Placeholder	https://jsonplaceholder.typicode.com/
+
+
+MEAN Stack: Mongo Express Angular Node
+MEN:        Mongo Express Node
+
+
+npm init
+	express
+	ejs
+	body-parser
+	request
+	
+	
+request({
+    'url':'https://www.google.it',
+    'method': "GET",
+    'proxy':'http://proxyvipfra.nb.ford.com:83'
+  },function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+    } else {
+        console.log(error);
+    }
+  })
+  
+  
+  https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=madonna
+
+'url': 'https://it.wikipedia.org/w/api.php?action=query&list=search&srsearch=' + persona + '&format=json',
+
+  
+  SELECT distinct ?item ?itemLabel ?itemDescription (SAMPLE(?DR) as ?DR) (SAMPLE(?RIP) as ?RIP) (SAMPLE(?image)as ?image) (SAMPLE(?article)as ?article) WHERE {
+  ?item wdt:P31 wd:Q5.
+  ?item ?label "Madonna"@en.  
+  ?article schema:about ?item .
+  ?article schema:inLanguage "en" .
+  ?article schema:isPartOf <https://en.wikipedia.org/>.  
+  OPTIONAL{?item wdt:P569 ?DR .} # P569 : Date of birth
+  OPTIONAL{?item wdt:P570 ?RIP .}     # P570 : Date of death
+  OPTIONAL{?item wdt:P18 ?image .}     # P18 : image  
+	
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }    
+}
+GROUP BY ?item ?itemLabel ?itemDescription
+
+
+
+
+
+
