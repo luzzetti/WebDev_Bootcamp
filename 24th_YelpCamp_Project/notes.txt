@@ -1,0 +1,70 @@
+
+
+{useNewUrlParser: true});
+
+
+October 14th, 2018 - Update
+
+
+If you're getting an error like this: DeprecationWarning: collection.findAndModify is deprecated. Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead.
+
+then please see here.
+
+or if you're getting: 
+DeprecationWarning: collection.remove is deprecated. 
+Use deleteOne, deleteMany, or bulkWrite instead.
+
+then see here.
+
+
+September 18th, 2018 - Update:
+
+
+If you're getting an error like this: 
+DeprecationWarning: collection.ensureIndex is deprecated. 
+Use createIndexes instead.
+
+then please see here.
+
+
+August 23rd, 2018 - Update:
+
+
+If you're getting an error like this:
+ DeprecationWarning: collection.find option [fields] is deprecated and will be removed in a later version.
+
+then see here for an explanation of what's going on.
+(TL;DR: you can ignore this warning)
+
+
+
+July 5th, 2018 - Update: 
+If you're getting an error like this: 
+UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 2): MongoError: port must be specified  
+
+or this:
+
+DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect. 
+
+..then see here for the solution.
+
+
+Previous Notes:
+In the last lecture Colt mentioned being able to limit how many documents you could remove by chaining .limit() onto the .remove() command in mongodb. However, that was a slight oversight and that specific syntax won't work. Please see here for an example of the correct syntax.
+
+Meanwhile, in the next few lectures you will learn about an Object Document Modeling (ODM) package for Express called Mongoose.
+
+You may run into two different warnings in your terminal regarding the deprecation of mpromise and open(), they will look like this:
+
+Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library
+instead: http://mongoosejs.com/docs/promises.html
+and this:
+
+`open()` is deprecated in mongoose >= 4.11.0, use `openUri()` instead, 
+or set the `useMongoClient` option if using `connect()` or `createConnection()`
+Neither of these warnings should happen anymore if you're using MongoDB 3.6.x (latest version) and Mongoose 5.x.x (latest version) see here for instructions on how to update if you don't already have the latest versions of both MongoDB and Mongoose.
+
+*Note: You may want to bookmark this lecture and come back to it if you run into either of the warnings mentioned above
+
+cheers,
+Ian
