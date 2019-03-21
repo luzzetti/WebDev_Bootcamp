@@ -2,14 +2,13 @@ var express = require("express");
 var app = express();
 var request = require("request");
 
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
 // General search:
 // http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb 
 
 const omdbApiURL = "http://www.omdbapi.com/";
 var omdbApiPARAMS = "?s=";
-var movieTitle = "california";
 const omdbApiKEY = "&apikey=thewdb";
 
 var connParams = {
@@ -23,11 +22,17 @@ app.get("/", (req, res) => {
     res.render("search");
 })
 
+/*
+So the thing to remember here is, if the request is sent via a GET method, then it will populate the req.query object, but if it is sent as a POST method then it will populate the req.body object (as long as body-parser is installed and configured properly in your project).
+*/
+
 app.get("/results", (req, res) => {
     console.log("Hit: /results");
 
+    var titolo = req.query.titolo;
+    var url = omdbApiURL + omdbApiPARAMS + titolo + omdbApiKEY;
     var connParams = {
-        'url': omdbApiURL + omdbApiPARAMS + req.query.titolo + omdbApiKEY,
+        'url': url,
         'method': "GET",
         'proxy': 'http://proxyvipfra.nb.ford.com:83'
     }
@@ -38,7 +43,7 @@ app.get("/results", (req, res) => {
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
 
-            res.render("results", {data: data});
+            res.render("results", { data: data });
         }
     });
 });
