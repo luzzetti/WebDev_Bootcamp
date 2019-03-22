@@ -7,14 +7,16 @@ var express = require("express"),
 mongoose.connect("mongodb://localhost:3001/yelp_camp", { useNewUrlParser: true });
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
 // Campground.create({
 //     name: "Castello del Boccale",
-//     image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t31.0-8/18672840_850962105060614_68846299082118422_o.jpg?_nc_cat=107&_nc_ht=scontent-mxp1-1.xx&oh=2e4d337726bfc90dc62aa6a876d05bc2&oe=5D13758D"
+//     image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t31.0-8/18672840_850962105060614_68846299082118422_o.jpg?_nc_cat=107&_nc_ht=scontent-mxp1-1.xx&oh=2e4d337726bfc90dc62aa6a876d05bc2&oe=5D13758D",
+//     description: "Una delle splendide foto di Carlo Deviti"
 // }, function (err, campground) {
 //     if (err) {
 //         console.log("ERROR");
@@ -46,6 +48,7 @@ app.get("/", (req, res) => {
     res.render("landing");
 });
 
+//INDEX - Route
 app.get("/campgrounds", (req, res) => {
 
     //Get all campgrounds from DB
@@ -54,22 +57,24 @@ app.get("/campgrounds", (req, res) => {
             console.log("Impossible to retrieve");
             console.log(err);
         } else {
-            res.render("campgrounds", { campgrounds: campgrounds });
+            res.render("index", { campgrounds: campgrounds });
         }
     });
 });
 
-
+//CREATE Route
 app.post("/campgrounds", (req, res) => {
     // Get data from form to add to campground array
     console.log("POST HIT: /campgrounds")
     var name = req.body.name;
     var image = req.body.image;
+    var desc = req.body.description;
+
     //Redirect back to campgrounds page
-    var newCampground = { name: name, image: image };
+    var newCampground = { name: name, image: image, description:desc };
     // Create a new campground and save to DB
 
-    Campground.create(newCampground, function(err, campground) {
+    Campground.create(newCampground, function (err, campground) {
         if (err) {
             console.log("Errore nell'aggiunta di un campground");
             console.log(err);
@@ -80,8 +85,24 @@ app.post("/campgrounds", (req, res) => {
     });
 });
 
+//NEW route
 app.get("/campgrounds/new", (req, res) => {
     res.render("new");
+});
+
+//SHOW more info about a campground
+app.get("/campgrounds/:id", (req, res) => {
+
+    console.log("PARAMS: " + req.params.id);
+
+    Campground.findById(req.params.id, (err, campground) => {
+        if (err) {
+            console.log("ERRORE: " + err);
+        } else {
+            console.log("TROVATO");
+            res.render("show", {campground:campground});
+        }
+    });
 });
 
 app.get("*", (req, res) => {
