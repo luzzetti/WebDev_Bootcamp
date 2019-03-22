@@ -21,6 +21,10 @@ IMAGE Placeholder	https://placeholder.com/
 JSON Placeholder	https://jsonplaceholder.typicode.com/
 
 
+Body-parser = Prendere i dati situati dentro un form
+
+
+
 MEAN Stack: Mongo Express Angular Node
 MEN:        Mongo Express Node
 
