@@ -1,0 +1,9 @@
+RESTful Routes
+
+Index           /posts              GET         Post.find()                 Lists all posts
+New             /posts/New          GET         N/A                         Show New Post Form
+Create          /posts              POST        Post.Create()               Create new dog & redirect
+Show            /posts/:ID          GET         Post.findById()             Show info about a specific Post
+Edit            /posts/:ID/edit     GET         Post.findById()             Show Edit Form for one post
+Update          /posts/:ID          PUT         Post.findByIdAndUpdate()    Update a particular post, and redirect
+Destoy          /posts/:ID          DELETE      Post.findByIdAndRemove()    Delete a particular post, and redirect

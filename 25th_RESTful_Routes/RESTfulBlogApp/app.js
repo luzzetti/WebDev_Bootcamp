@@ -1,6 +1,7 @@
 var express     = require("express"),
     app         = express(),
-    methodOverride = require("method-override");
+    expressSanitizer = require("express-sanitizer"),
+    methodOverride = require("method-override"),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose");
 
@@ -11,7 +12,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method")); //After BodyParser
+app.use(expressSanitizer());
 
 
 // MONGOOSE/MODEL CONFIG
@@ -28,10 +30,12 @@ var Blog = mongoose.model("Blog", blogSchema);
 
 //INDEX route
 app.get("/", (req, res) => {
+    console.log("HIT: /");
     res.redirect("/blogs");
 })
 
 app.get("/blogs", (req, res) => {
+    console.log("HIT: /blogs");
     Blog.find({}, (err, blogs) => {
         if (err) {
             console.log("ERRORE: " + err);
@@ -43,12 +47,16 @@ app.get("/blogs", (req, res) => {
 
 //NEW route
 app.get("/blogs/new", (req, res) => {
+    console.log("HIT: /blogs/new get");
     res.render("new");
 });
 
 //CREATE route
 app.post("/blogs", (req, res) => {
-    //Create post
+    console.log("HIT: /blogs in post");
+    //Sanitize and Create post
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+
     Blog.create(req.body.blog, (err, newPost) => {
         if (err) {
             console.log("ERRORE: " + err);
@@ -61,6 +69,7 @@ app.post("/blogs", (req, res) => {
 
 //SHOW
 app.get("/blogs/:id", (req, res) => {
+    console.log("HIT: /blogs id SHOW");
     Blog.findById(req.params.id, (err, foundBlog) => {
         if (err) {
             console.log("ERROR: " + err);
@@ -73,6 +82,8 @@ app.get("/blogs/:id", (req, res) => {
 
 //EDIT
 app.get("/blogs/:id/edit", (req, res) => {
+    console.log("HIT: /blogs/id/edit");
+
     Blog.findById(req.params.id, (err, foundPost) => {
         if (err) {
             console.log("ERRORE: " + err);
@@ -85,8 +96,14 @@ app.get("/blogs/:id/edit", (req, res) => {
 
 //UPDATE
 app.put("/blogs/:id", (req, res) => {
-    Blog.findOneAndUpdate(req.params.id, req.body.blog, (err, updatedPost) => {
+    
+    console.log("HIT: /blogs/id put update");
+
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedPost) => {
         if (err) {
+            console.log("ERRORE...");
             res.redirect("/");
         } else {
             res.redirect("/blogs/" + req.params.id);
@@ -96,7 +113,10 @@ app.put("/blogs/:id", (req, res) => {
 
 //DELETE Router
 app.delete("/blogs/:id", (req, res) => {
-    Blog.findOneAndDelete(req.params.id, (err) => {
+
+    console.log("HIT: /blogs/id delete");
+
+    Blog.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             res.redirect("/");
         } else {
