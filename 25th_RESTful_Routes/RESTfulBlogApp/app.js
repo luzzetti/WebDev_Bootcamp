@@ -1,5 +1,6 @@
 var express     = require("express"),
     app         = express(),
+    methodOverride = require("method-override");
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose");
 
@@ -10,6 +11,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
+
 
 // MONGOOSE/MODEL CONFIG
 var blogSchema = new mongoose.Schema({
@@ -66,6 +69,41 @@ app.get("/blogs/:id", (req, res) => {
             res.render("show", {blog:foundBlog});
         }
     })
+});
+
+//EDIT
+app.get("/blogs/:id/edit", (req, res) => {
+    Blog.findById(req.params.id, (err, foundPost) => {
+        if (err) {
+            console.log("ERRORE: " + err);
+            res.redirect("/blog");
+        } else {
+            res.render("edit", {post: foundPost});
+        }
+    });
+});
+
+//UPDATE
+app.put("/blogs/:id", (req, res) => {
+    Blog.findOneAndUpdate(req.params.id, req.body.blog, (err, updatedPost) => {
+        if (err) {
+            res.redirect("/");
+        } else {
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
+});
+
+//DELETE Router
+app.delete("/blogs/:id", (req, res) => {
+    Blog.findOneAndDelete(req.params.id, (err) => {
+        if (err) {
+            res.redirect("/");
+        } else {
+            console.log("DELETED!");
+            res.redirect("/blogs");
+        }
+    });
 });
 
 
