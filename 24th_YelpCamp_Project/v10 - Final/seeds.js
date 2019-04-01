@@ -3,47 +3,77 @@ var mongoose = require("mongoose"),
     Comment = require("./models/comment");
 
 var data = [
-    { description: "Bacon ipsum dolor amet shoulder ham hock pork chop pork rump, shank salami pastrami. Salami cupim tenderloin pastrami beef ribs rump corned beef filet mignon ham landjaeger. Tail pork belly chicken hamburger ham hock. Ham pork rump, ground round picanha sirloin sausage cupim kielbasa strip steak. Tongue ham hock pork swine, spare ribs pancetta flank t-bone. Salami picanha short loin shoulder, kielbasa bresaola meatball andouille capicola meatloaf flank tenderloin pastrami chicken. Pork tenderloin short ribs landjaeger pork chop.Leberkas cupim sirloin shankle frankfurter, ribeye ham hock tenderloin jowl.Ribeye shank pork, pork loin chuck rump short ribs tri- tip kevin jowl shoulder andouille pig jerky.Picanha brisket cupim turducken ball tip rump.Rump ball tip frankfurter, kielbasa short ribs chuck bresaola jowl kevin meatloaf ham hock salami chicken cow venison.Turducken sirloin ground round ham hock t - bone venison. Pork kielbasa doner kevin bresaola, tail meatloaf chuck short loin turducken sirloin swine beef ribs.Ribeye pig cupim swine alcatra corned beef.Burgdoggen andouille prosciutto filet mignon venison.Chuck turkey corned beef beef ribs, meatloaf porchetta frankfurter landjaeger shankle chicken pancetta capicola t - bone.", name: "Antignanos Pier", image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t31.0-8/18620821_850962091727282_6459667969808174257_o.jpg?_nc_cat=107&_nc_ht=scontent-mxp1-1.xx&oh=6428e682038a21dd2813fc962065d87b&oe=5D4B55EE"},
-    { description: "Bacon ipsum dolor amet shoulder ham hock pork chop pork rump, shank salami pastrami. Salami cupim tenderloin pastrami beef ribs rump corned beef filet mignon ham landjaeger. Tail pork belly chicken hamburger ham hock. Ham pork rump, ground round picanha sirloin sausage cupim kielbasa strip steak. Tongue ham hock pork swine, spare ribs pancetta flank t-bone. Salami picanha short loin shoulder, kielbasa bresaola meatball andouille capicola meatloaf flank tenderloin pastrami chicken. Pork tenderloin short ribs landjaeger pork chop.Leberkas cupim sirloin shankle frankfurter, ribeye ham hock tenderloin jowl.Ribeye shank pork, pork loin chuck rump short ribs tri- tip kevin jowl shoulder andouille pig jerky.Picanha brisket cupim turducken ball tip rump.Rump ball tip frankfurter, kielbasa short ribs chuck bresaola jowl kevin meatloaf ham hock salami chicken cow venison.Turducken sirloin ground round ham hock t - bone venison. Pork kielbasa doner kevin bresaola, tail meatloaf chuck short loin turducken sirloin swine beef ribs.Ribeye pig cupim swine alcatra corned beef.Burgdoggen andouille prosciutto filet mignon venison.Chuck turkey corned beef beef ribs, meatloaf porchetta frankfurter landjaeger shankle chicken pancetta capicola t - bone.", name: "Viterbo", image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/50292177_1302846096538877_5467230833637064704_o.jpg?_nc_cat=109&_nc_ht=scontent-mxp1-1.xx&oh=0b5d927d7409dcb186fa8912f284329a&oe=5D4D81AA" },
-    { description: "Bacon ipsum dolor amet shoulder ham hock pork chop pork rump, shank salami pastrami. Salami cupim tenderloin pastrami beef ribs rump corned beef filet mignon ham landjaeger. Tail pork belly chicken hamburger ham hock. Ham pork rump, ground round picanha sirloin sausage cupim kielbasa strip steak. Tongue ham hock pork swine, spare ribs pancetta flank t-bone. Salami picanha short loin shoulder, kielbasa bresaola meatball andouille capicola meatloaf flank tenderloin pastrami chicken. Pork tenderloin short ribs landjaeger pork chop.Leberkas cupim sirloin shankle frankfurter, ribeye ham hock tenderloin jowl.Ribeye shank pork, pork loin chuck rump short ribs tri- tip kevin jowl shoulder andouille pig jerky.Picanha brisket cupim turducken ball tip rump.Rump ball tip frankfurter, kielbasa short ribs chuck bresaola jowl kevin meatloaf ham hock salami chicken cow venison.Turducken sirloin ground round ham hock t - bone venison. Pork kielbasa doner kevin bresaola, tail meatloaf chuck short loin turducken sirloin swine beef ribs.Ribeye pig cupim swine alcatra corned beef.Burgdoggen andouille prosciutto filet mignon venison.Chuck turkey corned beef beef ribs, meatloaf porchetta frankfurter landjaeger shankle chicken pancetta capicola t - bone.", name: "Siena", image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/47382745_1270530729770414_5396446761826910208_o.jpg?_nc_cat=111&_nc_ht=scontent-mxp1-1.xx&oh=2f74d45dfc62e7d5d43b707900fbc249&oe=5D1484F4" },
-    { description: "Bacon ipsum dolor amet shoulder ham hock pork chop pork rump, shank salami pastrami. Salami cupim tenderloin pastrami beef ribs rump corned beef filet mignon ham landjaeger. Tail pork belly chicken hamburger ham hock. Ham pork rump, ground round picanha sirloin sausage cupim kielbasa strip steak. Tongue ham hock pork swine, spare ribs pancetta flank t-bone. Salami picanha short loin shoulder, kielbasa bresaola meatball andouille capicola meatloaf flank tenderloin pastrami chicken. Pork tenderloin short ribs landjaeger pork chop.Leberkas cupim sirloin shankle frankfurter, ribeye ham hock tenderloin jowl.Ribeye shank pork, pork loin chuck rump short ribs tri- tip kevin jowl shoulder andouille pig jerky.Picanha brisket cupim turducken ball tip rump.Rump ball tip frankfurter, kielbasa short ribs chuck bresaola jowl kevin meatloaf ham hock salami chicken cow venison.Turducken sirloin ground round ham hock t - bone venison. Pork kielbasa doner kevin bresaola, tail meatloaf chuck short loin turducken sirloin swine beef ribs.Ribeye pig cupim swine alcatra corned beef.Burgdoggen andouille prosciutto filet mignon venison.Chuck turkey corned beef beef ribs, meatloaf porchetta frankfurter landjaeger shankle chicken pancetta capicola t - bone.", name: "Castello del Boccale", image: "https://scontent-mxp1-1.xx.fbcdn.net/v/t31.0-8/18672840_850962105060614_68846299082118422_o.jpg?_nc_cat=107&_nc_ht=scontent-mxp1-1.xx&oh=2e4d337726bfc90dc62aa6a876d05bc2&oe=5D13758D" }
-]
+    {
+        name: "Cloud's Rest",
+        image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        author: {
+            id: "588c2e092403d111454fff76",
+            username: "Jack"
+        }
+    },
+    {
+        name: "Desert Mesa",
+        image: "https://farm6.staticflickr.com/5487/11519019346_f66401b6c1.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        author: {
+            id: "588c2e092403d111454fff71",
+            username: "Jill"
+        }
+    },
+    {
+        name: "Canyon Floor",
+        image: "https://farm1.staticflickr.com/189/493046463_841a18169e.jpg",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        author: {
+            id: "588c2e092403d111454fff77",
+            username: "Jane"
+        }
+    }
+];
 
 function seedDB() {
-    Campground.remove({}, (err) => {
+    //Remove all campgrounds
+    Campground.deleteMany({}, function (err) {
         if (err) {
-            console.log("Error");
-        } else {
-            console.log("ERHMMM");
+            console.log(err);
         }
-
-        //Add a few campgrounds
-
-        // data.forEach((seed) => {
-        //     Campground.create(seed, (err, data) => {
-        //         if (err) {
-        //             console.log(err);
-        //         } else {
-        //             console.log("Added Campground");
-        //             //Create a comment
-        //             Comment.create(
-        //                 {
-        //                     text: "This place is great",
-        //                     author: "Bob"
-        //                 }, (err, comment) => {
-        //                     if (err) {
-        //                         console.log(err);
-        //                     } else {
-        //                         data.comments.push(comment);
-        //                         data.save();
-        //                         console.log("Created new comment");
-        //                     }
-        //                 });
-        //         }
-        //     });
-        // });
-        
+        console.log("removed campgrounds!");
+        Comment.deleteMany({}, function (err) {
+            if (err) {
+                console.log(err);
+            }
+            console.log("removed comments!");
+            //add a few campgrounds
+            data.forEach(function (seed) {
+                Campground.create(seed, function (err, campground) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log("added a campground");
+                        //create a comment
+                        Comment.create(
+                            {
+                                text: "This place is great, but I wish there was internet",
+                                author: {
+                                    id: "588c2e092403d111454fff76",
+                                    username: "Jack"
+                                }
+                            }, function (err, comment) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    campground.comments.push(comment);
+                                    campground.save();
+                                    console.log("Created new comment");
+                                }
+                            });
+                    }
+                });
+            });
+        })
     });
+    //add a few comments
 }
 
 module.exports = seedDB;
