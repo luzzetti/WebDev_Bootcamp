@@ -43,9 +43,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //MOLTO IMPORTANTE
-//Passare req.user ovunque
-//nelle VIEWS.
-//così posso usare currentUser._id
+//passa currentUser in ogni pagina del template. views
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
