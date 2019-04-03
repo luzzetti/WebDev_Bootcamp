@@ -28,12 +28,13 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
+    var price = req.body.price;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
     //Redirect back to campgrounds page
-    var newCampground = { name: name, image: image, description: desc, author: author};
+    var newCampground = { name: name, image: image, description: desc, price: price, author: author};
     // Create a new campground and save to DB
 
     Campground.create(newCampground, function (err, campground) {
@@ -74,7 +75,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, (req, res) => {
             req.flash("error","Impossibile aggiornare. Errore generico");
             res.redirect("/campground");
         } else {
-            req.flash("success","Campground Added Succesfully!");
+            req.flash("success","Campground Updated Succesfully!");
             res.redirect("/campgrounds/" + req.params.id);
         }
     });
