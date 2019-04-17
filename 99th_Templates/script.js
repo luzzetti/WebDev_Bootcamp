@@ -1,2 +1,2 @@
-Console.log("Connected");
+console.log("Connected");
 
