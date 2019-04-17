@@ -1,0 +1,14 @@
+body { 
+    font-family: lato;
+    
+    /* Fixed navbar Workaround */
+    padding-top: 4.5rem; 
+}
+
+h1 {
+    font-weight: 700;
+}
+
+#foto {
+    height: 200px;
+}
